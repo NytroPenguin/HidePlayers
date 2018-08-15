@@ -1,0 +1,12 @@
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\bin\Debug\netstandard2.0\HidePlayers.deps.json
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\bin\Debug\netstandard2.0\HidePlayers.dll
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\bin\Debug\netstandard2.0\HidePlayers.pdb
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\bin\Debug\netstandard2.0\Lib K Relay.dll
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\bin\Debug\netstandard2.0\Lib K Relay.dll.config
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.csprojAssemblyReference.cache
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.csproj.CoreCompileInputs.cache
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.AssemblyInfoInputs.cache
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.AssemblyInfo.cs
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.csproj.CopyComplete
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.dll
+C:\Users\Greg Cruice\source\repos\HidePlayers\HidePlayers\obj\Debug\netstandard2.0\HidePlayers.pdb
