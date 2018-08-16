@@ -40,6 +40,8 @@ namespace HidePlayers
         {
             proxy.HookCommand("hideplayers", onCommand);
             proxy.HookPacket(PacketType.UPDATE, onUpdate);
+            proxy.HookPacket(PacketType.NEWTICK, onTick);
+
 
             foreach (var obj in GameData.Objects.Map)
             {
@@ -52,22 +54,49 @@ namespace HidePlayers
             PluginUtils.Log("test:", pets.Count.ToString() + " pets loaded");
         }
 
+        private void onTick(Client client, Packet packet)
+        {
+            NewTickPacket tick = (NewTickPacket)packet;
+            foreach (Status status in tick.Statuses)
+            {
+                if (status.ObjectId != client.ObjectId)
+                    foreach (StatData data in status.Data)
+                    {
+                        if ((data.Id == StatsType.Effects || data.Id == StatsType.Effects2 || data.Id == StatsType.Size || data.Id == StatsType.Stars) && _hidePlayers)
+                            data.IntValue = 0;
+                        else if (data.Id == StatsType.PetType && _hidePlayers)
+                            data.StringValue = "";
+                    }
+            }
+        }
 
         private void onUpdate(Client client, Packet packet)
         {
             UpdatePacket update = (UpdatePacket)packet;
+            List<Entity> betterObjects = new List<Entity>();
             foreach (Entity obj in update.NewObjs)
             {
-                if ((Enum.IsDefined(typeof(Classes), (short)obj.ObjectType) && obj.Status.ObjectId != client.ObjectId) || (pets.Contains(obj.ObjectType)))
+                if (((Enum.IsDefined(typeof(Classes), (short)obj.ObjectType) || obj.ObjectType == 785) && obj.Status.ObjectId != client.ObjectId || (pets.Contains(obj.ObjectType))))
                 {
                     foreach (var data in obj.Status.Data)
                     {
-                        if (data.Id == StatsType.Size && _hidePlayers)
+                        if ((data.Id == StatsType.Size || data.Id == StatsType.Effects || data.Id == StatsType.Effects2) && _hidePlayers)
                             data.IntValue = 0;
+                        else if ((data.Id == StatsType.Name || data.Id == StatsType.PetType )&& _hidePlayers)
+                            data.StringValue = "";
                     }
-                }
+                }// else
+                //{
+                //    betterObjects.Add(obj);
+                //}
 
             }
+            //update.Send = false;
+            //UpdatePacket betterUpdate = (UpdatePacket)Packet.Create(PacketType.UPDATE);
+            //betterUpdate.Tiles = update.Tiles;
+            //betterUpdate.NewObjs = betterObjects.ToArray();
+            //betterUpdate.Drops = update.Drops;
+            //client.SendToClient(betterUpdate);
         }
 
         private void onCommand(Client client, string command, string[] args)
